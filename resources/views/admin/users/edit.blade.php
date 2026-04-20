@@ -2,9 +2,9 @@
 @section('title', $user->full_name)
 @section('content')
 
-    @include('partials.header')
+    @include('admin.partials.header')
 
-    @include('partials.menu')
+    @include('admin.partials.menu')
 
     <main class="main">
         <div class="main-content page-users-edit">
@@ -26,11 +26,11 @@
                 </div>
 
                 <div class="ue-summary-row mb-3">
-                    <div class="ue-summary-item">
+                    {{-- <div class="ue-summary-item">
                         <span class="ue-summary-icon"><i class="bi bi-person-vcard"></i></span>
                         <span class="ue-summary-label">User ID</span>
                         <strong class="ue-summary-value">{{ $user->GUID }}</strong>
-                    </div>
+                    </div> --}}
                     <div class="ue-summary-item">
                         <span class="ue-summary-icon"><i class="bi bi-shield-check"></i></span>
                         <span class="ue-summary-label">{{ __('general.role_name') }}</span>
@@ -180,55 +180,6 @@
                                 </div>
                             </div>
 
-                            <!-- Work Information -->
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <h5 class="card-title">{{ __('general.work_information') }}</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row g-3">
-                                        {{-- <div class="col-md-6">
-                                            <label class="form-label">Department</label>
-                                            <select class="form-select">
-                                                <option value="">Select department...</option>
-                                                <option value="engineering" selected>Engineering</option>
-                                                <option value="design">Design</option>
-                                                <option value="marketing">Marketing</option>
-                                                <option value="sales">Sales</option>
-                                                <option value="support">Support</option>
-                                                <option value="hr">Human Resources</option>
-                                            </select>
-                                        </div> --}}
-                                        {{-- <div class="col-md-6">
-                                            <label class="form-label">Manager</label>
-                                            <select class="form-select">
-                                                <option value="">Select manager...</option>
-                                                <option value="2" selected>Chris Thompson</option>
-                                                <option value="3">Michael Chen</option>
-                                            </select>
-                                        </div> --}}
-                                        {{-- <div class="col-md-6">
-                                            <label class="form-label">Office Location</label>
-                                            <select class="form-select">
-                                                <option value="">Select location...</option>
-                                                <option value="ny" selected>New York, USA</option>
-                                                <option value="sf">San Francisco, USA</option>
-                                                <option value="london">London, UK</option>
-                                                <option value="remote">Remote</option>
-                                            </select>
-                                        </div> --}}
-                                        <div class="col-md-6">
-                                            <label class="form-label">Employee ID</label>
-                                            <input type="text" name="GUID" class="form-control" value="{{ $user->GUID }}" readonly>
-                                        </div>
-                                        {{-- <div class="col-md-6">
-                                            <label class="form-label">Start Date</label>
-                                            <input type="date" class="form-control" value="2024-01-15">
-                                        </div> --}}
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- Role & Permissions -->
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -337,7 +288,7 @@
         </div>
 
         <!-- Footer -->
-        @include('partials.footer')
+        @include('admin.partials.footer')
     </main>
 
   <!-- Back to Top -->

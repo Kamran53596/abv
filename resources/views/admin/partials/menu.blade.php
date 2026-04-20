@@ -6,9 +6,9 @@
 
         <!-- Main Dashboard -->
         <li class="nav-item">
-          <a class="nav-link @if (Route::currentRouteName() == 'backend.home') active @endif" href="{{ route('backend.home') }}">
+          <a class="nav-link @if (Route::currentRouteName() == 'backend.dashboard') active @endif" href="{{ route('backend.dashboard') }}">
             <span class="nav-icon"><i class="ph-light ph-squares-four"></i></span>
-            <span class="nav-text">{{ __('breadcrumbs.home') }}</span>
+            <span class="nav-text">{{ __('breadcrumbs.admin.home') }}</span>
             <span class="nav-badge nav-badge-soft">{{ __('general.text_main') }}</span>
           </a>
         </li>
@@ -35,7 +35,7 @@
           <li class="nav-item has-submenu @if (in_array(Route::currentRouteName(), ['backend.admins', 'backend.roles'])) open @endif">
             <a class="nav-link" href="#" aria-expanded="false">
               <span class="nav-icon"><i class="ph-light ph-users-three"></i></span>
-              <span class="nav-text">{{ __('breadcrumbs.users') }}</span>
+              <span class="nav-text">{{ __('breadcrumbs.admin.admins') }}</span>
               <span class="nav-arrow"><i class="bi bi-chevron-right"></i></span>
             </a>
             <ul class="nav-submenu ">

@@ -2,9 +2,9 @@
 @section('title', __('breadcrumbs.admin.roles'))
 @section('content')
 
-    @include('partials.header')
+    @include('admin.partials.header')
 
-    @include('partials.menu')
+    @include('admin.partials.menu')
 
     <main class="main">
         <div class="main-content page-roles">
@@ -337,7 +337,7 @@
         </div>
 
         <!-- Footer -->
-        @include('partials.footer')
+        @include('admin.partials.footer')
     </main>
 
     <!-- Back to Top -->

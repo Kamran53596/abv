@@ -89,7 +89,7 @@ return [
     'text_create' => 'Yarat',
     'text_edit' => 'Redaktə et',
     'text_delete' => 'Sil',
-    'productivity_apps' => 'Proqramlar',
+    'productivity_apps' => 'Modullar',
     'total_contracts' => 'Ümumi Müqavilələr',
     'add_contract' => 'Müqavilə Yarat',
     'view_contract' => 'Müqavilə №%s',

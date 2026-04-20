@@ -15,11 +15,10 @@ Route::get('/backend', function () {
 Route::prefix('backend')->name('backend.')->group(function () {
     // Admin Login Routes
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-    // Route::post('/login', [App\Http\Controllers\Admin\LoginController::class, 'login']);
-    //Auth::routes();
+    Route::post('/login', [LoginController::class, 'login']);
 
     // Protected Admin Routes
-    Route::middleware(['admin'])->group(function () {
+    Route::middleware(['auth:admins'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         //Admins
@@ -52,6 +51,4 @@ Route::prefix('backend')->name('backend.')->group(function () {
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     });
 });
-
-//Auth::routes();
 

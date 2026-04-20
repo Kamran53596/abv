@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\JsonResponse;
 use Spatie\Permission\Models\Role;
-use App\Models\User;
+use App\Models\Admin;
 
 class RolesController extends Controller
 {
     public function index($id = null): View
     {
-        $this->authorize('viewRole', User::class);
+        $this->authorize('viewRole', Admin::class);
 
         if (!$id) {
             $roles = Role::where('name' , '!=', 'super-admin')->get();
 
-            return view('roles', compact('roles', 'id'));
+            return view('admin.roles', compact('roles', 'id'));
         } else {
             $roles = Role::where('name' , '!=', 'super-admin')->get();
 
@@ -30,7 +30,7 @@ class RolesController extends Controller
 
     public function create(Request $request)
     {
-        $this->authorize('createRole', User::class);
+        $this->authorize('createRole', Admin::class);
 
         Role::create([
             'name' => $request->name,
@@ -42,7 +42,7 @@ class RolesController extends Controller
 
     public function update(Request $request, $id): JsonResponse
     {
-        $this->authorize('editRole', User::class);
+        $this->authorize('editRole', Admin::class);
 
         $role = Role::findOrFail($id);
 
@@ -56,18 +56,18 @@ class RolesController extends Controller
 
     public function removeRole($id)
     {
-        $this->authorize('deleteRole', User::class);
+        $this->authorize('deleteRole', Admin::class);
 
-        $user = User::findOrFail($id);
+        $admin = Admin::findOrFail($id);
 
-        $user->removeRole($user->role_name);
+        $admin->removeRole($admin->role_name);
 
         return back();
     }
 
     public function delete($id)
     {
-        $this->authorize('deleteRole', User::class);
+        $this->authorize('deleteRole', Admin::class);
 
         $role = Role::findOrFail($id);
 

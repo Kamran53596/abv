@@ -7,7 +7,7 @@
 
         <div class="fx-error-card">
             <a href="{{ route('bakcend.dashboard') }}" class="fx-error-logo"><img src="{{ asset('assets/img/logo.png') }}" alt="ABV"></a>
-            <span class="fx-error-kicker">{{ __('breadcrumbs.404') }}</span>
+            <span class="fx-error-kicker">{{ __('breadcrumbs.admin.404') }}</span>
             <h1 class="fx-error-code">404</h1>
             <h2 class="fx-error-title">{{ __('general.not_found') }}</h2>
             <p class="fx-error-text">{{ __('general.404_desc') }}</p>

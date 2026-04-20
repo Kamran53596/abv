@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdatePasswordRequest;
@@ -13,12 +13,12 @@ class ProfileController extends Controller
 {
     public function index(): View
     {
-        return view('profile.index');
+        return view('admin.profile.index');
     }
 
     public function edit(): View
     {
-        return view('profile.edit');
+        return view('admin.profile.edit');
     }
 
     public function updatePassword(UpdatePasswordRequest $request)

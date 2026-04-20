@@ -1,10 +1,10 @@
-@extends('layouts.main')
-@section('title', __('breadcrumbs.users'))
+@extends('admin.layouts.main')
+@section('title', __('breadcrumbs.admin.admins'))
 @section('content')
 
-    @include('partials.header')
+    @include('admin.partials.header')
 
-    @include('partials.menu')
+    @include('admin.partials.menu')
     <main class="main">
         <div class="main-content page-users">
             <div class="page-users">
@@ -69,7 +69,7 @@
                                     <i class="bi bi-sliders"></i> {{ Request::get('role') ?? __('general.text_roles') }}
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="{{ route('users') }}">{{ __('general.text_all_roles') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('backend.admins') }}">{{ __('general.text_all_roles') }}</a></li>
                                     @foreach ($roles as $role)
                                         <li><a class="dropdown-item" href="?role={{ $role->name }}">{{ $role->name }}</a></li>
                                     @endforeach
@@ -102,7 +102,7 @@
                                         <td>
                                             <div class="users-user">
                                                 <div class="users-avatar-wrap"><img src="{{ asset('assets/img/profile-img.webp') }}" alt="" class="users-avatar"><span class="users-avatar-status online"></span></div>
-                                                <div class="users-user-info"><a href="{{ route('view.user', ['id' => $user->id]) }}" class="users-user-name">{{ $user->full_name }}</a><span class="users-user-email">{{ $user->email }}</span></div>
+                                                <div class="users-user-info"><a href="{{ route('backend.view.admin', ['id' => $user->id]) }}" class="users-user-name">{{ $user->full_name }}</a><span class="users-user-email">{{ $user->email }}</span></div>
                                             </div>
                                         </td>
                                         <td><span class="users-role admin"><i class="bi bi-shield-check"></i> {{ $user->role_name }}</span></td>
@@ -111,8 +111,8 @@
                                         <td class="users-meta">{{ \Carbon\Carbon::parse($user->created_at)->translatedFormat('F j, Y') }}</td>
                                         <td>
                                             <div class="users-actions">
-                                                <a href="{{ route('view.user', ['id' => $user->id]) }}" class="users-action-btn" title="View"><i class="bi bi-eye"></i></a>
-                                                <a href="{{ route('edit.user', ['id' => $user->id]) }}" class="users-action-btn" title="Edit"><i class="bi bi-pencil"></i></a>
+                                                <a href="{{ route('backend.view.admin', ['id' => $user->id]) }}" class="users-action-btn" title="View"><i class="bi bi-eye"></i></a>
+                                                <a href="{{ route('backend.edit.admin', ['id' => $user->id]) }}" class="users-action-btn" title="Edit"><i class="bi bi-pencil"></i></a>
                                                 <div class="dropdown">
                                                     <button class="users-action-btn dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></button>
                                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -122,7 +122,7 @@
                                                             <hr class="dropdown-divider">
                                                         </li> --}}
                                                         @can('deleteUsers')
-                                                            <li><a class="dropdown-item text-danger" href="{{ route('delete.user', ['id' => $user->id]) }}"><i class="bi bi-trash me-2"></i> {{ __('general.text_delete') }}</a></li>
+                                                            <li><a class="dropdown-item text-danger" href="{{ route('backend.delete.admin', ['id' => $user->id]) }}"><i class="bi bi-trash me-2"></i> {{ __('general.text_delete') }}</a></li>
                                                         @endcan
                                                     </ul>
                                                 </div>
@@ -147,7 +147,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('create.user') }}" id="createUser" method="POST">
+                                <form action="{{ route('backend.create.admin') }}" id="createUser" method="POST">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label">{{ __('general.first_name') }}</label>
@@ -204,7 +204,7 @@
         </div>
 
         <!-- Footer -->
-        @include('partials.footer')
+        @include('admin.partials.footer')
     </main>
 
     <!-- Back to Top -->

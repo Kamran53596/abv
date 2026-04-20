@@ -1,10 +1,10 @@
-@extends('layouts.main')
+@extends('admin.layouts.main')
 @section('title', auth('admins')->user()->full_name)
 @section('content')
 
-    @include('partials.header')
+    @include('admin.partials.header')
 
-    @include('partials.menu')
+    @include('admin.partials.menu')
 
     <main class="main">
         <div class="main-content page-settings">
@@ -48,7 +48,7 @@
                         <div class="card settings-side-card">
                             <div class="card-body p-2">
                                 <nav class="settings-nav">
-                                    <a href="{{ route('edit.profile') }}" class="settings-nav-item active">
+                                    <a href="{{ route('backend.edit.profile') }}" class="settings-nav-item active">
                                         <i class="bi bi-sliders"></i>
                                         <div class="settings-nav-text">
                                             <span class="settings-nav-label">General</span>
@@ -80,7 +80,7 @@
                                 <h5 class="card-title mb-0">Account Profile</h5>
                             </div>
                             <div class="card-body">
-                                <form id="userEditForm" method="POST" enctype="multipart/form-data" action="{{ route('update.user', ['id' => auth('admins')->user()->id]) }}" data-validate>
+                                <form id="userEditForm" method="POST" enctype="multipart/form-data" action="{{ route('backend.update.admin', ['id' => auth('admins')->user()->id]) }}" data-validate>
                                     @csrf
                                     <div class="col-sm-6">
                                         <p class="text-muted small mb-2">Avatar</p>
@@ -124,10 +124,6 @@
                                                 <option value="0" @if (auth('admins')->user()->gender === 0) selected @endif>{{ __('general.text_female') }}</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Employee ID</label>
-                                            <input type="text" name="GUID" class="form-control" value="{{ auth('admins')->user()->GUID }}" readonly>
-                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -146,7 +142,7 @@
                                         <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#changePassword">{{ __('general.change_password') }}</button>
                                     </div>
                                     <div class="collapse @if (count($errors)) show @endif" id="changePassword">
-                                        <form id="passwordForm" method="POST" action="{{ route('profile.password') }}">
+                                        <form id="passwordForm" method="POST" action="{{ route('backend.profile.password') }}">
                                             @csrf
                                             <div class="settings-password-form">
                                                 <div class="row g-3" style="max-width: 560px;">
@@ -226,7 +222,7 @@
                             <h5 class="mb-2">{{ __('general.text_delete') }}</h5>
                             <div class="d-flex justify-content-center gap-2">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('general.text_cancel') }}</button>
-                                <a type="button" href="{{ route('delete.user', ['id' => auth('admins')->user()->id]) }}" class="btn btn-danger">{{ __('general.text_delete') }}</a>
+                                <a type="button" href="{{ route('backend.delete.admin', ['id' => auth('admins')->user()->id]) }}" class="btn btn-danger">{{ __('general.text_delete') }}</a>
                             </div>
                         </div>
                     </div>
@@ -253,7 +249,7 @@
         </div>
 
         <!-- Footer -->
-        @include('partials.footer')
+        @include('admin.partials.footer')
     </main>
 
     <!-- Back to Top -->

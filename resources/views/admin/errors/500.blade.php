@@ -7,7 +7,7 @@
 
         <div class="fx-error-card">
             <a href="{{ route('backend.dashboard') }}" class="fx-error-logo"><img src="{{ asset('assets/img/logo.png') }}" alt="ABV"></a>
-            <span class="fx-error-kicker">{{ __('breadcrumbs.500') }}</span>
+            <span class="fx-error-kicker">{{ __('breadcrumbs.admin.500') }}</span>
             <span class="fx-error-icon danger"><i class="bi bi-exclamation-octagon"></i></span>
             <h2 class="fx-error-title">Internal server issue</h2>
             <p class="fx-error-text">A temporary server error interrupted your request. Our monitoring system has already captured this incident.</p>

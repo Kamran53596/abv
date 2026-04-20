@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\JsonResponse;
-use App\Models\User;
+use App\Models\Admin;
 use Spatie\Permission\Models\Role;
 use Illuminate\Validation\Rules;
 use App\Http\Requests\UserUpdateRequest;
 
-class UsersController extends Controller
+class AdminController extends Controller
 {
     public function index(Request $request): View
     {
-        $this->authorize('viewAdmin', User::class);
+        $this->authorize('viewAdmin', Admin::class);
 
-        $users = User::getData($request);
+        $users = Admin::getData($request);
 
         $roles = Role::get();
 
@@ -27,18 +28,18 @@ class UsersController extends Controller
 
     public function view($id): View
     {
-        $this->authorize('viewUsers', User::class);
+        $this->authorize('viewUsers', Admin::class);
 
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
 
         return view('admin.users.view', compact('user'));
     }
 
     public function edit($id): View
     {
-        $this->authorize('editAdmin', User::class);
+        $this->authorize('editAdmin', Admin::class);
 
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
 
         $roles = Role::get();
 
@@ -47,7 +48,7 @@ class UsersController extends Controller
 
     public function update(UserUpdateRequest $request, $id): RedirectResponse
     {
-        $user = User::find($id);
+        $user = Admin::find($id);
 
         $user->fill($request->validated());
         
@@ -77,13 +78,13 @@ class UsersController extends Controller
 
     public function create(Request $request): JsonResponse
     {
-        $this->authorize('createAdmin', User::class);
+        $this->authorize('createAdmin', Admin::class);
 
         $credentials = \Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:3', 'max:255'],
             'surname' => ['required', 'string', 'min:3', 'max:255'],
             'role' => ['required'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Admin::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -94,7 +95,7 @@ class UsersController extends Controller
             ], 200, [], JSON_UNESCAPED_UNICODE);
         }
 
-        $user = User::create([
+        $user = Admin::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
@@ -111,9 +112,9 @@ class UsersController extends Controller
 
     public function deleteUser($id): RedirectResponse
     {
-        $this->authorize('deleteAdmin', User::class);
+        $this->authorize('deleteAdmin', Admin::class);
 
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
         $user->removeRole($user->role_name);
 
         $user->delete();

@@ -2,9 +2,9 @@
 @section('title', $user->full_name)
 @section('content')
 
-    @include('partials.header')
+    @include('admin.partials.header')
 
-    @include('partials.menu')
+    @include('admin.partials.menu')
 
     <main class="main">
         <div class="main-content page-users-view">
@@ -207,25 +207,6 @@
                                 </div>
                             </div>
                         @endif
-                        
-
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">{{ __('general.active_sessions') }}</h5>
-                            </div>
-                            <div class="card-body">
-                                @foreach ($user->sessions as $session)
-                                    <div class="uv-session-item">
-                                        <div class="uv-session-icon"><i class="bi bi-laptop"></i></div>
-                                        <div class="uv-session-info">
-                                            <div class="uv-session-title">{{ $session->user_agent }} <span class="uv-session-current">Current</span></div>
-                                            <div class="uv-session-details">{{ \Carbon\Carbon::parse($user->last_activity)->translatedFormat('F j, Y H:i') }}</div>
-                                        </div>
-                                        {{-- <button class="btn btn-sm btn-outline-danger">Revoke</button> --}}
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -251,7 +232,7 @@
         </div>
 
         <!-- Footer -->
-        @include('partials.footer')
+        @include('admin.partials.footer')
     </main>
 
   <!-- Back to Top -->

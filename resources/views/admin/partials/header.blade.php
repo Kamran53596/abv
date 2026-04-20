@@ -191,7 +191,7 @@
           <div class="user-menu-body">
             <a class="user-menu-item" href="{{ route('backend.profile') }}">
               <span class="user-menu-icon"><i class="bi bi-person"></i></span>
-              <span>{{ __('breadcrumbs.profile') }}</span>
+              <span>{{ __('breadcrumbs.admin.profile') }}</span>
             </a>
             {{-- <a class="user-menu-item" href="settings.html">
               <span class="user-menu-icon"><i class="bi bi-sliders"></i></span>

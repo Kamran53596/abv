@@ -1,10 +1,10 @@
-@extends('layouts.main')
-@section('title', __('breadcrumbs.profile'))
+@extends('admin.layouts.main')
+@section('title', __('breadcrumbs.admin.profile'))
 @section('content')
 
-    @include('partials.header')
+    @include('admin.partials.header')
 
-    @include('partials.menu')
+    @include('admin.partials.menu')
 
     <main class="main">
         <div class="main-content page-profile">
@@ -28,17 +28,17 @@
                             </div>
                         </div>
                         <div class="profile-hero-actions">
-                            <a href="{{ route('edit.profile') }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil me-1"></i> {{ __('general.edit_profile') }}</a>
+                            <a href="{{ route('backend.edit.profile') }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil me-1"></i> {{ __('general.edit_profile') }}</a>
                             {{-- <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-share me-1"></i> Share</button> --}}
                         </div>
                     </div>
 
                     <div class="profile-metrics">
-                        <div class="profile-metric">
+                        {{-- <div class="profile-metric">
                             <span class="profile-metric-icon"><i class="bi bi-check2-square"></i></span>
                             <span class="profile-metric-label">{{ __('breadcrumbs.contract') }}</span>
                             <strong class="profile-metric-value">{{ count(auth('admins')->user()->contracts) }}</strong>
-                        </div>
+                        </div> --}}
                         {{-- <div class="profile-metric">
                             <span class="profile-metric-icon"><i class="bi bi-check2-square"></i></span>
                             <span class="profile-metric-label">Tasks Closed</span>
@@ -198,7 +198,7 @@
             </div>
         </div>
         <!-- Footer -->
-        @include('partials.footer')
+        @include('admin.partials.footer')
     </main>
 
   <!-- Back to Top -->

@@ -27,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        Paginator::defaultView('partials.pagination');
+        Paginator::defaultView('admin.partials.pagination');
     }
 }

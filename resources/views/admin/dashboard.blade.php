@@ -1,10 +1,10 @@
-@extends('layouts.main')
-@section('title', __('breadcrumbs.home'))
+@extends('admin.layouts.main')
+@section('title', __('breadcrumbs.admin.home'))
 @section('content')
 
-  @include('partials.header')
+  @include('admin.partials.header')
 
-  @include('partials.menu')
+  @include('admin.partials.menu')
 
   <!-- Main Content -->
   <main class="main">
@@ -407,24 +407,25 @@
               </div>
             </div>
           </div> --}}
-
-          <div class="col-xl-4">
-            <div class="card h-100">
-              <div class="card-header">
-                <h5 class="card-title">İstifadəçilər onlayn</h5>
-                <div class="card-actions"><a href="{{ route('users') }}" class="fx-link">Hamısına bax</a></div>
-              </div>
-              <div class="card-body">
-                <div class="dash-team">
-                  @foreach ($users as $user)
-                    <div class="dash-team-member"><img src="{{ asset('assets/img/profile-img.webp') }}" alt="{{ $user->full_name }}" class="dash-team-avatar">
-                      <div class="dash-team-info"><span class="dash-team-name">{{ $user->full_name }}</span><span class="dash-team-role">{{ $user->role_name }}</span></div><span class="dash-team-status online"></span>
-                    </div>
-                  @endforeach
+          @if ($admins->isNotEmpty())
+            <div class="col-xl-4">
+              <div class="card h-100">
+                <div class="card-header">
+                  <h5 class="card-title">Administrator onlayn</h5>
+                  <div class="card-actions"><a href="{{ route('backend.admins') }}" class="fx-link">Hamısına bax</a></div>
+                </div>
+                <div class="card-body">
+                  <div class="dash-team">
+                    @foreach ($admins as $admin)
+                      <div class="dash-team-member"><img src="{{ asset('assets/img/profile-img.webp') }}" alt="{{ $admin->full_name }}" class="dash-team-avatar">
+                        <div class="dash-team-info"><span class="dash-team-name">{{ $admin->full_name }}</span><span class="dash-team-role">{{ $admin->role_name }}</span></div><span class="dash-team-status online"></span>
+                      </div>
+                    @endforeach
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          @endif
 
           {{-- <div class="col-xl-4">
             <div class="card h-100">
@@ -474,7 +475,7 @@
     </div>
 
     <!-- Footer -->
-    @include('partials.footer')
+    @include('admin.partials.footer')
   </main>
 
   <!-- Back to Top -->
