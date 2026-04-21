@@ -48,8 +48,6 @@
       <script src="{{ asset('assets/vendor/choices.js/choices.min.js') }}"></script>
       <script src="{{ asset('assets/vendor/flatpickr/flatpickr.min.js') }}"></script>
       <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-      <script src="//www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
-      <script src="{{ asset('assets/js/firebase_subscribe.js') }}"></script>
 
       <!-- Template Main JS Files -->
       <script src="{{ asset('assets/js/forms.js') }}"></script>

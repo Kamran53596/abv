@@ -70,7 +70,7 @@
         };
 
         $.ajax({
-            url: '/edit/role/permission/'+$(this).data('id'),
+            url: '/backend/edit/role/permission/'+$(this).data('id'),
             data: JSON.stringify(request),
             type: 'POST',
             contentType: 'application/json',

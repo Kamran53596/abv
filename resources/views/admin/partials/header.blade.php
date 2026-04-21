@@ -209,7 +209,7 @@
           <div class="user-menu-footer">
             <a class="user-menu-logout" href="{{ route('backend.logout') }}">
               <i class="bi bi-box-arrow-right"></i>
-              <span>{{ __('general.text_logout') }}</span>
+              <span>{{ __('admin.text_logout') }}</span>
             </a>
           </div>
         </div>
@@ -271,7 +271,7 @@
 
     <a href="{{ route('backend.logout') }}" class="mobile-menu-item mobile-menu-item-danger">
       <i class="bi bi-box-arrow-right"></i>
-      <span class="mobile-menu-label">{{ __('general.text_logout') }}</span>
+      <span class="mobile-menu-label">{{ __('admin.text_logout') }}</span>
     </a>
   </div>
 </div>

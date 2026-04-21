@@ -26,7 +26,7 @@
                     @if (!$id)
                         <div class="page-header-actions">
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addRoleModal">
-                                <i class="bi bi-plus-lg me-1"></i> {{ __('general.add_role') }}
+                                <i class="bi bi-plus-lg me-1"></i> {{ __('admin.add_role') }}
                             </button>
                         </div>
                     @endif
@@ -37,7 +37,7 @@
                     <div class="col-xl-4 col-lg-5">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <h5 class="card-title">{{ __('general.text_roles') }}</h5>
+                                <h5 class="card-title">{{ __('admin.text_roles') }}</h5>
                             </div>
                             <div class="card-body p-0">
                                 <div class="roles-list">
@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="roles-item-info">
                                                 <span class="roles-item-name">{{ $item->name }}</span>
-                                                <span class="roles-item-count">{{ count($item->users) }} {{ __('general.text_users') }}</span>
+                                                <span class="roles-item-count">{{ count($item->users) }} {{ __('admin.text_users') }}</span>
                                             </div>
                                             <a href="{{ route('backend.roles', ['id' => $item->id]) }}" class="roles-item-edit" title="Edit"><i class="bi bi-pencil"></i></a>
                                             <a class="roles-item-edit text-danger" href="{{ route('backend.delete.role', ['id' => $item->id]) }}"><i class="bi bi-trash"></i></a>
@@ -104,12 +104,12 @@
                         @if ($id)
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">{{ __('general.role_details') }}</h5>
+                                    <h5 class="card-title">{{ __('admin.role_details') }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="roles-detail-list">
                                     <div class="roles-detail">
-                                        <span class="roles-detail-label">{{ __('general.role_name') }}</span>
+                                        <span class="roles-detail-label">{{ __('admin.role_name') }}</span>
                                         <span class="roles-detail-value">{{ $role->name }}</span>
                                     </div>
                                     {{-- <div class="roles-detail">
@@ -117,11 +117,11 @@
                                         <span class="roles-detail-value">Full system access with all permissions enabled. Can manage users, roles, and system settings.</span>
                                     </div> --}}
                                     <div class="roles-detail">
-                                        <span class="roles-detail-label">{{ __('general.text_created') }}</span>
+                                        <span class="roles-detail-label">{{ __('admin.text_created') }}</span>
                                         <span class="roles-detail-value">{{ \Carbon\Carbon::parse($role->created_at)->translatedFormat('F j, Y') }}</span>
                                     </div>
                                     <div class="roles-detail">
-                                        <span class="roles-detail-label">{{ __('general.text_modified') }}</span>
+                                        <span class="roles-detail-label">{{ __('admin.text_modified') }}</span>
                                         <span class="roles-detail-value">{{ \Carbon\Carbon::parse($role->updated_at)->translatedFormat('F j, Y') }}</span>
                                     </div>
                                     </div>
@@ -136,11 +136,11 @@
                             <div class="card mb-4">
                                 <div class="card-header d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h5 class="card-title mb-0">{{ __('general.permissions_matrix') }}</h5>
-                                        <span class="roles-subtitle">{{ sprintf(__('general.configure_access'), $role->name) }}</span>
+                                        <h5 class="card-title mb-0">{{ __('admin.permissions_matrix') }}</h5>
+                                        <span class="roles-subtitle">{{ sprintf(__('admin.configure_access'), $role->name) }}</span>
                                     </div>
                                     <button class="btn btn-primary btn-sm edit_permissions" data-id="{{ $id }}">
-                                        <i class="bi bi-check-lg me-1"></i> {{ __('general.save_changes') }}
+                                        <i class="bi bi-check-lg me-1"></i> {{ __('admin.save_changes') }}
                                     </button>
                                 </div>
                                 <div class="card-body p-0">
@@ -148,11 +148,11 @@
                                         <table class="table roles-perm-table mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th>{{ __('general.text_module') }}</th>
-                                                    <th class="text-center">{{ __('general.text_view') }}</th>
-                                                    <th class="text-center">{{ __('general.text_create') }}</th>
-                                                    <th class="text-center">{{ __('general.text_edit') }}</th>
-                                                    <th class="text-center">{{ __('general.text_delete') }}</th>
+                                                    <th>{{ __('admin.text_module') }}</th>
+                                                    <th class="text-center">{{ __('admin.text_view') }}</th>
+                                                    <th class="text-center">{{ __('admin.text_create') }}</th>
+                                                    <th class="text-center">{{ __('admin.text_edit') }}</th>
+                                                    <th class="text-center">{{ __('admin.text_delete') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -179,10 +179,10 @@
 
                                                 <!-- Users -->
                                                 <tr class="roles-perm-group">
-                                                    <td colspan="6"><i class="bi bi-people me-2"></i> {{ __('general.user_managment') }}</td>
+                                                    <td colspan="6"><i class="bi bi-people me-2"></i> {{ __('admin.user_managment') }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="roles-perm-module">{{ __('breadcrumbs.admin.users') }}</td>
+                                                    <td class="roles-perm-module">{{ __('breadcrumbs.admin.admins') }}</td>
                                                     <td class="text-center"><input type="checkbox" name="permissions" value="viewUsers" class="form-check-input" @if ($role->hasPermissionTo('viewUsers')) checked @endif></td>
                                                     <td class="text-center"><input type="checkbox" name="permissions" value="createUsers" class="form-check-input" @if ($role->hasPermissionTo('createUsers')) checked @endif></td>
                                                     <td class="text-center"><input type="checkbox" name="permissions" value="editUsers" class="form-check-input" @if ($role->hasPermissionTo('editUsers')) checked @endif></td>
@@ -197,7 +197,7 @@
                                                 </tr>
                                                 <!-- Apps -->
                                                 <tr class="roles-perm-group">
-                                                    <td colspan="6"><i class="bi bi-file-earmark-text me-2"></i> {{ __('general.productivity_apps') }}</td>
+                                                    <td colspan="6"><i class="bi bi-file-earmark-text me-2"></i> {{ __('admin.productivity_apps') }}</td>
                                                 </tr>
                                                 {{-- <tr>
                                                     <td class="roles-perm-module">{{ __('breadcrumbs.contract') }}</td>
@@ -253,8 +253,8 @@
                                 <!-- Users with this role -->
                                 <div class="card">
                                     <div class="card-header d-flex align-items-center justify-content-between">
-                                        <h5 class="card-title mb-0">{{ sprintf(__('general.users_with_roles'), $role->name) }}</h5>
-                                        <span class="roles-user-count">{{ count($role->users) }} {{ __('general.text_users') }}</span>
+                                        <h5 class="card-title mb-0">{{ sprintf(__('admin.users_with_roles'), $role->name) }}</h5>
+                                        <span class="roles-user-count">{{ count($role->users) }} {{ __('admin.text_users') }}</span>
                                     </div>
                                     <div class="card-body p-0">
                                         <div class="roles-users-list">
@@ -286,18 +286,18 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">{{ __('general.new_role') }}</h5>
+                            <h5 class="modal-title">{{ __('admin.new_role') }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
                             <form method="POST" id="createRole" action="{{ route('backend.create.role') }}">
                                 @csrf
                                 <div class="mb-3">
-                                    <label class="form-label required">{{ __('general.role_name') }}</label>
-                                    <input type="text" name="name" value="" class="form-control" required placeholder="{{ __('general.role_name') }}">
+                                    <label class="form-label required">{{ __('admin.role_name') }}</label>
+                                    <input type="text" name="name" value="" class="form-control" required placeholder="{{ __('admin.role_name') }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('general.role_color') }}</label>
+                                    <label class="form-label">{{ __('admin.role_color') }}</label>
                                     <div class="roles-color-options">
                                         <label class="roles-color-option">
                                             <input type="radio" name="roleColor" value="danger">
@@ -328,8 +328,8 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('general.text_cancel') }}</button>
-                            <button type="submit" form="createRole" class="btn btn-primary">{{ __('general.create_role') }}</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('admin.text_cancel') }}</button>
+                            <button type="submit" form="createRole" class="btn btn-primary">{{ __('admin.create_role') }}</button>
                         </div>
                     </div>
                 </div>

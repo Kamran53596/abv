@@ -9,7 +9,7 @@
           <a class="nav-link @if (Route::currentRouteName() == 'backend.dashboard') active @endif" href="{{ route('backend.dashboard') }}">
             <span class="nav-icon"><i class="ph-light ph-squares-four"></i></span>
             <span class="nav-text">{{ __('breadcrumbs.admin.home') }}</span>
-            <span class="nav-badge nav-badge-soft">{{ __('general.text_main') }}</span>
+            <span class="nav-badge nav-badge-soft">{{ __('admin.text_main') }}</span>
           </a>
         </li>
 
@@ -81,8 +81,11 @@
           </ul>
         </li> --}}
 
+        <!-- Catalog -->
+        <li class="nav-heading"><span>{{ __('admin.catalog') }}</span></li>
+
         <!-- Apps Section -->
-        <li class="nav-heading"><span>{{ __('general.productivity_apps') }}</span></li>
+        <li class="nav-heading"><span>{{ __('admin.productivity_apps') }}</span></li>
 
         {{-- <li class="nav-item">
           <a class="nav-link " href="apps-calendar.html">

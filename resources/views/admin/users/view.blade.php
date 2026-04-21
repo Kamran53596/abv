@@ -14,13 +14,13 @@
                         <h1 class="page-title">{{ $user->full_name }}</h1>
                         <nav class="breadcrumb">
                             <a href="{{ route('backend.dashboard') }}" class="breadcrumb-item">{{ __('breadcrumbs.admin.home') }}</a>
-                            <a href="{{ route('backend.admins') }}" class="breadcrumb-item">{{ __('breadcrumbs.admin.users') }}</a>
+                            <a href="{{ route('backend.admins') }}" class="breadcrumb-item">{{ __('breadcrumbs.admin.admins') }}</a>
                             <span class="breadcrumb-item active">{{ $user->full_name }}</span>
                         </nav>
                     </div>
                     <div class="page-header-actions">
-                        <a href="{{ route('backend.edit.admin', ['id' => $user->id]) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil me-1"></i> {{ __('general.edit_user') }}</a>
-                        <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal"><i class="bi bi-trash me-1"></i> {{ __('general.text_delete') }}</a>
+                        <a href="{{ route('backend.edit.admin', ['id' => $user->id]) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil me-1"></i> {{ __('admin.edit_user') }}</a>
+                        <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal"><i class="bi bi-trash me-1"></i> {{ __('admin.text_delete') }}</a>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="{{ route('backend.edit.admin', ['id' => $user->id]) }}" class="uv-identity-cta">{{ __('general.manage_profile') }} <i class="bi bi-arrow-right"></i></a>
+                                    <a href="{{ route('backend.edit.admin', ['id' => $user->id]) }}" class="uv-identity-cta">{{ __('admin.manage_profile') }} <i class="bi bi-arrow-right"></i></a>
                                 </div>
 
                                 <div class="uv-metrics-grid">
@@ -71,10 +71,10 @@
                                 </div>
 
                                 <div class="uv-identity-details">
-                                    <div class="uv-detail-item"><span>{{ __('general.text_phone') }}</span><strong>{{ $user->phone }}</strong></div>
+                                    <div class="uv-detail-item"><span>{{ __('admin.text_phone') }}</span><strong>{{ $user->phone }}</strong></div>
                                     {{-- <div class="uv-detail-item"><span>Location</span><strong>New York, USA</strong></div> --}}
                                     {{-- <div class="uv-detail-item"><span>Manager</span><strong>Chris Thompson</strong></div> --}}
-                                    <div class="uv-detail-item"><span>{{ __('general.text_joined') }}</span><strong>{{ \Carbon\Carbon::parse($user->created_at)->translatedFormat('F j, Y') }}</strong></div>
+                                    <div class="uv-detail-item"><span>{{ __('admin.text_joined') }}</span><strong>{{ \Carbon\Carbon::parse($user->created_at)->translatedFormat('F j, Y') }}</strong></div>
                                 </div>
                             </div>
                         </div>
@@ -83,11 +83,11 @@
                     <div class="col-xxl-4">
                         <div class="card uv-health-card h-100">
                             <div class="card-header">
-                                <h5 class="card-title">{{ __('general.account_health') }}</h5>
+                                <h5 class="card-title">{{ __('admin.account_health') }}</h5>
                             </div>
                             <div class="card-body">
                                 <div class="uv-health-item">
-                                    <span class="uv-health-label">{{ __('general.text_status') }}</span>
+                                    <span class="uv-health-label">{{ __('admin.text_status') }}</span>
                                     <span class="users-status active"><span class="users-status-dot"></span> {{ $user->status_title }}</span>
                                 </div>
                                 {{-- <div class="uv-health-item">
@@ -99,7 +99,7 @@
                                     <span class="uv-health-ok"><i class="bi bi-check-circle-fill"></i> Enabled</span>
                                 </div> --}}
                                 <div class="uv-health-item">
-                                    <span class="uv-health-label">{{ __('general.last_active') }}</span>
+                                    <span class="uv-health-label">{{ __('admin.last_active') }}</span>
                                     <span class="uv-health-value">{{ \Carbon\Carbon::parse($user->last_activity)->translatedFormat('F j, Y H:i') }}</span>
                                 </div>
                                 {{-- <div class="uv-health-item">
@@ -192,12 +192,12 @@
                         @if ($user->roles->isNotEmpty())
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <h5 class="card-title">{{ __('general.access_rights') }}</h5>
+                                    <h5 class="card-title">{{ __('admin.access_rights') }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="uv-access-note">
                                         <i class="bi bi-info-circle"></i>
-                                        <span>{{ sprintf(__('general.role_info'), $user->role_name) }} <a href="{{ route('backend.roles') }}">{{ __('breadcrumbs.admin.roles') }}</a>.</span>
+                                        <span>{{ sprintf(__('admin.role_info'), $user->role_name) }} <a href="{{ route('backend.roles') }}">{{ __('breadcrumbs.admin.roles') }}</a>.</span>
                                     </div>
                                     <div class="uv-access-grid">
                                         @foreach ($user->roles->first()?->permissions->pluck('group')->unique() as $permission)
@@ -220,11 +220,11 @@
                         <div class="ue-delete-icon">
                             <i class="bi bi-exclamation-triangle"></i>
                         </div>
-                        <h5 class="mb-2">{{ __('general.text_delete') }}</h5>
-                        <p class="text-muted mb-4">{!! sprintf(__('general.sure_to_delete_user'), $user->full_name) !!}</p>
+                        <h5 class="mb-2">{{ __('admin.text_delete') }}</h5>
+                        <p class="text-muted mb-4">{!! sprintf(__('admin.sure_to_delete_user'), $user->full_name) !!}</p>
                         <div class="d-flex justify-content-center gap-2">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('general.text_cancel') }}</button>
-                            <a type="button" href="{{ route('backend.delete.admin', ['id' => $user->id]) }}" class="btn btn-danger">{{ __('general.text_delete') }}</a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('admin.text_cancel') }}</button>
+                            <a type="button" href="{{ route('backend.delete.admin', ['id' => $user->id]) }}" class="btn btn-danger">{{ __('admin.text_delete') }}</a>
                         </div>
                     </div>
                 </div>

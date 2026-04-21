@@ -12,16 +12,16 @@
                 <!-- Page Header -->
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">{{ __('general.edit_user') }}</h1>
+                        <h1 class="page-title">{{ __('admin.edit_user') }}</h1>
                         <nav class="breadcrumb">
                             <a href="{{ route('backend.dashboard') }}" class="breadcrumb-item">{{ __('breadcrumbs.admin.home') }}</a>
-                            <a href="{{ route('backend.admins') }}" class="breadcrumb-item">{{ __('breadcrumbs.admin.users') }}</a>
+                            <a href="{{ route('backend.admins') }}" class="breadcrumb-item">{{ __('breadcrumbs.admin.admins') }}</a>
                             <span class="breadcrumb-item active">Edit {{ $user->full_name }}</span>
                         </nav>
                     </div>
                     <div class="page-header-actions">
-                        <a href="{{ route('backend.view.admin', ['id' => $user->id]) }}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-eye me-1"></i> {{ __('general.view_profile') }}</a>
-                        <button type="submit" form="userEditForm" class="btn btn-primary btn-sm"><i class="bi bi-check-lg me-1"></i> {{ __('general.save_changes') }}</button>
+                        <a href="{{ route('backend.view.admin', ['id' => $user->id]) }}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-eye me-1"></i> {{ __('admin.view_profile') }}</a>
+                        <button type="submit" form="userEditForm" class="btn btn-primary btn-sm"><i class="bi bi-check-lg me-1"></i> {{ __('admin.save_changes') }}</button>
                     </div>
                 </div>
 
@@ -33,12 +33,12 @@
                     </div> --}}
                     <div class="ue-summary-item">
                         <span class="ue-summary-icon"><i class="bi bi-shield-check"></i></span>
-                        <span class="ue-summary-label">{{ __('general.role_name') }}</span>
+                        <span class="ue-summary-label">{{ __('admin.role_name') }}</span>
                         <strong class="ue-summary-value">{{ $user->role_name }}</strong>
                     </div>
                     <div class="ue-summary-item">
                         <span class="ue-summary-icon"><i class="bi bi-clock-history"></i></span>
-                        <span class="ue-summary-label">{{ __('general.last_active') }}</span>
+                        <span class="ue-summary-label">{{ __('admin.last_active') }}</span>
                         <strong class="ue-summary-value">{{ \Carbon\Carbon::parse($user->last_activity)->translatedFormat('F j, Y H:i') }}</strong>
                     </div>
                     {{-- <div class="ue-summary-item">
@@ -74,14 +74,14 @@
                             <!-- Account Status Card -->
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <h5 class="card-title">{{ __('general.account_status') }}</h5>
+                                    <h5 class="card-title">{{ __('admin.account_status') }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label class="form-label">{{ __('general.text_status') }}</label>
+                                        <label class="form-label">{{ __('admin.text_status') }}</label>
                                         <select class="form-select">
-                                            <option value="1" @if ($user->status) selected @endif>{{ __('general.text_active') }}</option>
-                                            <option value="0" @if (!$user->status) selected @endif>{{ __('general.text_passive') }}</option>
+                                            <option value="1" @if ($user->status) selected @endif>{{ __('admin.text_active') }}</option>
+                                            <option value="0" @if (!$user->status) selected @endif>{{ __('admin.text_passive') }}</option>
                                         </select>
                                     </div>
                                     {{-- <div class="ue-toggles">
@@ -119,12 +119,12 @@
                             <!-- Danger Zone -->
                             <div class="card ue-danger-card">
                                 <div class="card-header">
-                                    <h5 class="card-title"><i class="bi bi-exclamation-triangle me-1"></i> {{ __('general.danger_zone') }}</h5>
+                                    <h5 class="card-title"><i class="bi bi-exclamation-triangle me-1"></i> {{ __('admin.danger_zone') }}</h5>
                                 </div>
                                 <div class="card-body">
-                                    <p class="ue-danger-text">{{ __('general.delete_user_desc') }}</p>
+                                    <p class="ue-danger-text">{{ __('admin.delete_user_desc') }}</p>
                                     <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
-                                        <i class="bi bi-trash me-1"></i> {{ __('general.text_delete') }}
+                                        <i class="bi bi-trash me-1"></i> {{ __('admin.text_delete') }}
                                     </button>
                                 </div>
                             </div>
@@ -135,33 +135,33 @@
                             <!-- Personal Information -->
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <h5 class="card-title">{{ __('general.personal_information') }}</h5>
+                                    <h5 class="card-title">{{ __('admin.personal_information') }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row g-3">
                                         <div class="col-md-6">
-                                            <label class="form-label required">{{ __('general.first_name') }}</label>
+                                            <label class="form-label required">{{ __('admin.first_name') }}</label>
                                             <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
                                             @if ($errors->first('name'))
                                                 <div class="invalid-feedback" style="display: block">{{ $errors->first('name') }}</div>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label required">{{ __('general.last_name') }}</label>
+                                            <label class="form-label required">{{ __('admin.last_name') }}</label>
                                             <input type="text" name="surname" class="form-control" value="{{ $user->surname }}" required>
                                             @if ($errors->first('surname'))
                                                 <div class="invalid-feedback" style="display: block">{{ $errors->first('surname') }}</div>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label required">{{ __('general.text_email') }}</label>
+                                            <label class="form-label required">{{ __('admin.text_email') }}</label>
                                             <input type="email" name="email" class="form-control" value="{{ $user->email }}" readonly>
                                             @if ($errors->first('email'))
                                                 <div class="invalid-feedback" style="display: block">{{ $errors->first('email') }}</div>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label">{{ __('general.text_phone') }}</label>
+                                            <label class="form-label">{{ __('admin.text_phone') }}</label>
                                             <input type="tel" name="phone" class="form-control" value="{{ $user->phone }}">
                                         </div>
                                         {{-- <div class="col-md-6">
@@ -169,11 +169,11 @@
                                             <input type="date" class="form-control" value="1990-03-15">
                                         </div> --}}
                                         <div class="col-md-6">
-                                            <label class="form-label">{{ __('general.text_gender') }}</label>
+                                            <label class="form-label">{{ __('admin.text_gender') }}</label>
                                             <select name="gender" class="form-select">
-                                                <option value="">{{ __('general.text_select') }}</option>
-                                                <option value="1" @if ($user->gender === 1) selected @endif>{{ __('general.text_male') }}</option>
-                                                <option value="0" @if ($user->gender === 0) selected @endif>{{ __('general.text_female') }}</option>
+                                                <option value="">{{ __('admin.text_select') }}</option>
+                                                <option value="1" @if ($user->gender === 1) selected @endif>{{ __('admin.text_male') }}</option>
+                                                <option value="0" @if ($user->gender === 0) selected @endif>{{ __('admin.text_female') }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -188,9 +188,9 @@
                                 <div class="card-body">
                                     <div class="row g-3">
                                         <div class="col-md-6">
-                                            <label class="form-label required">{{ __('general.role_name') }}</label>
+                                            <label class="form-label required">{{ __('admin.role_name') }}</label>
                                             <select class="form-select" name="role" required>
-                                                <option value="">{{ __('general.select_role') }}</option>
+                                                <option value="">{{ __('admin.select_role') }}</option>
                                                 @foreach ($roles as $role)
                                                     <option value="{{ $role->name }}" @if ($role->name == 'super-admin' && !auth('admins')->user()->isSuperAdmin()) disabled @endif @if ($role->id == $user->roles->first()?->id) selected @endif>{{ $role->name }}</option>
                                                 @endforeach
@@ -215,24 +215,24 @@
                             <!-- Password -->
                             {{-- <div class="card mb-4">
                                 <div class="card-header">
-                                    <h5 class="card-title">{{ __('general.change_password') }}</h5>
+                                    <h5 class="card-title">{{ __('admin.change_password') }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="ue-password-note">
                                         <i class="bi bi-info-circle"></i>
-                                        <span>{{ __('general.keep_password') }}</span>
+                                        <span>{{ __('admin.keep_password') }}</span>
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-md-6">
-                                            <label class="form-label">{{ __('general.new_password') }}</label>
-                                            <input type="password" name="password" class="form-control" placeholder="{{ __('general.entry_password') }}">
+                                            <label class="form-label">{{ __('admin.new_password') }}</label>
+                                            <input type="password" name="password" class="form-control" placeholder="{{ __('admin.entry_password') }}">
                                             @if ($errors->first('password'))
                                                 <div class="invalid-feedback" style="display: block">{{ $errors->first('password') }}</div>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label">{{ __('general.confirm_password') }}</label>
-                                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('general.confirm_password') }}">
+                                            <label class="form-label">{{ __('admin.confirm_password') }}</label>
+                                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('admin.confirm_password') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -240,9 +240,9 @@
 
                             <!-- Form Actions -->
                             <div class="ue-form-actions">
-                                <a href="{{ route('backend.admins') }}" class="btn btn-secondary">{{ __('general.text_cancel') }}</a>
+                                <a href="{{ route('backend.admins') }}" class="btn btn-secondary">{{ __('admin.text_cancel') }}</a>
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="bi bi-check-lg me-1"></i> {{ __('general.save_changes') }}
+                                    <i class="bi bi-check-lg me-1"></i> {{ __('admin.save_changes') }}
                                 </button>
                             </div>
                         </div>
@@ -258,11 +258,11 @@
                             <div class="ue-delete-icon">
                                 <i class="bi bi-exclamation-triangle"></i>
                             </div>
-                            <h5 class="mb-2">{{ __('general.text_delete') }}</h5>
-                            <p class="text-muted mb-4">{!! sprintf(__('general.sure_to_delete_user'), $user->full_name) !!}</p>
+                            <h5 class="mb-2">{{ __('admin.text_delete') }}</h5>
+                            <p class="text-muted mb-4">{!! sprintf(__('admin.sure_to_delete_user'), $user->full_name) !!}</p>
                             <div class="d-flex justify-content-center gap-2">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('general.text_cancel') }}</button>
-                                <a type="button" href="{{ route('backend.delete.admin', ['id' => $user->id]) }}" class="btn btn-danger">{{ __('general.text_delete') }}</a>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('admin.text_cancel') }}</button>
+                                <a type="button" href="{{ route('backend.delete.admin', ['id' => $user->id]) }}" class="btn btn-danger">{{ __('admin.text_delete') }}</a>
                             </div>
                         </div>
                     </div>
@@ -279,9 +279,9 @@
                     <i class="bi bi-check-lg fs-1"></i>
                     </span>
                 </div>
-                <h5>{{ __('general.text_success') }}</h5>
-                <p class="text-muted mb-3">{{ __('general.changes_saved') }}</p>
-                <button type="button" onclick="successClose();" class="btn btn-success">{{ __('general.text_continue') }}</button>
+                <h5>{{ __('admin.text_success') }}</h5>
+                <p class="text-muted mb-3">{{ __('admin.changes_saved') }}</p>
+                <button type="button" onclick="successClose();" class="btn btn-success">{{ __('admin.text_continue') }}</button>
                 </div>
             </div>
             </div>

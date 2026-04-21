@@ -13,7 +13,7 @@
             <p class="fx-error-text">A temporary server error interrupted your request. Our monitoring system has already captured this incident.</p>
             <div class="fx-error-actions">
                 <button class="btn btn-primary" onclick="location.reload()"><i class="bi bi-arrow-clockwise me-1"></i> Try Again</button>
-                <a href="{{ route('backend.dashboard') }}" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> {{ __('general.back_home') }}</a>
+                <a href="{{ route('backend.dashboard') }}" class="btn btn-outline-secondary"><i class="bi bi-house me-1"></i> {{ __('admin.back_home') }}</a>
             </div>
         </div>
     </div>

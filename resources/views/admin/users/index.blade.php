@@ -16,7 +16,7 @@
                 <div class="page-header-actions">
                     {{-- <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-download me-1"></i> Export</button> --}}
                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addUserModal">
-                        <i class="bi bi-plus-lg me-1"></i> {{ __('general.add_user') }}
+                        <i class="bi bi-plus-lg me-1"></i> {{ __('admin.add_user') }}
                     </button>
                 </div>
                 </div>
@@ -66,10 +66,10 @@
 
                             <div class="dropdown">
                                 <button class="users-toolbar-btn dropdown-toggle" data-bs-toggle="dropdown">
-                                    <i class="bi bi-sliders"></i> {{ Request::get('role') ?? __('general.text_roles') }}
+                                    <i class="bi bi-sliders"></i> {{ Request::get('role') ?? __('admin.text_roles') }}
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="{{ route('backend.admins') }}">{{ __('general.text_all_roles') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('backend.admins') }}">{{ __('admin.text_all_roles') }}</a></li>
                                     @foreach ($roles as $role)
                                         <li><a class="dropdown-item" href="?role={{ $role->name }}">{{ $role->name }}</a></li>
                                     @endforeach
@@ -85,12 +85,12 @@
                                     <th class="users-th-check">
                                         <div class="form-check"><input class="form-check-input" type="checkbox" id="selectAll"></div>
                                     </th>
-                                    <th>{{ __('general.text_user') }}</th>
-                                    <th>{{ __('general.role_name') }}</th>
-                                    <th>{{ __('general.text_status') }}</th>
-                                    <th>{{ __('general.last_active') }}</th>
-                                    <th>{{ __('general.text_joined') }}</th>
-                                    <th class="users-th-actions">{{ __('general.text_actions') }}</th>
+                                    <th>{{ __('admin.text_user') }}</th>
+                                    <th>{{ __('admin.role_name') }}</th>
+                                    <th>{{ __('admin.text_status') }}</th>
+                                    <th>{{ __('admin.last_active') }}</th>
+                                    <th>{{ __('admin.text_joined') }}</th>
+                                    <th class="users-th-actions">{{ __('admin.text_actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -122,7 +122,7 @@
                                                             <hr class="dropdown-divider">
                                                         </li> --}}
                                                         @can('deleteUsers')
-                                                            <li><a class="dropdown-item text-danger" href="{{ route('backend.delete.admin', ['id' => $user->id]) }}"><i class="bi bi-trash me-2"></i> {{ __('general.text_delete') }}</a></li>
+                                                            <li><a class="dropdown-item text-danger" href="{{ route('backend.delete.admin', ['id' => $user->id]) }}"><i class="bi bi-trash me-2"></i> {{ __('admin.text_delete') }}</a></li>
                                                         @endcan
                                                     </ul>
                                                 </div>
@@ -143,31 +143,31 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">{{ __('general.add_user') }}</h5>
+                                <h5 class="modal-title">{{ __('admin.add_user') }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
                                 <form action="{{ route('backend.create.admin') }}" id="createUser" method="POST">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
-                                            <label class="form-label">{{ __('general.first_name') }}</label>
-                                            <input type="text" name="name" id="register-name" class="form-control" required placeholder="{{ __('general.entry_first_name') }}">
+                                            <label class="form-label">{{ __('admin.first_name') }}</label>
+                                            <input type="text" name="name" id="register-name" class="form-control" required placeholder="{{ __('admin.entry_first_name') }}">
                                             <div class="invalid-feedback error_name" style="display: block"></div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label">{{ __('general.last_name') }}</label>
-                                            <input type="text" name="surname" id="register-surname" class="form-control" required placeholder="{{ __('general.entry_last_name') }}">
+                                            <label class="form-label">{{ __('admin.last_name') }}</label>
+                                            <input type="text" name="surname" id="register-surname" class="form-control" required placeholder="{{ __('admin.entry_last_name') }}">
                                             <div class="invalid-feedback error_surname" style="display: block"></div>
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label">{{ __('general.text_email') }}</label>
-                                            <input type="email" name="email" id="register-email" class="form-control" required placeholder="{{ __('general.entry_email') }}">
+                                            <label class="form-label">{{ __('admin.text_email') }}</label>
+                                            <input type="email" name="email" id="register-email" class="form-control" required placeholder="{{ __('admin.entry_email') }}">
                                             <div class="invalid-feedback error_email" style="display: block"></div>
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label">{{ __('general.text_roles') }}</label>
+                                            <label class="form-label">{{ __('admin.text_roles') }}</label>
                                             <select class="form-select" id="register-role" name="role" required>
-                                                <option value="">{{ __('general.select_role') }}</option>
+                                                <option value="">{{ __('admin.select_role') }}</option>
                                                 @foreach ($roles as $role)
                                                     <option value="{{ $role->name }}" @if ($role->name == 'super-admin' && !auth('admins')->user()->isSuperAdmin()) disabled @endif>{{ $role->name }}</option>
                                                 @endforeach
@@ -175,13 +175,13 @@
                                             <div class="invalid-feedback error_role" style="display: block"></div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label">{{ __('general.text_password') }}</label>
-                                            <input type="password" name="password" id="register-password" class="form-control" required placeholder="{{ __('general.entry_password') }}">
+                                            <label class="form-label">{{ __('admin.text_password') }}</label>
+                                            <input type="password" name="password" id="register-password" class="form-control" required placeholder="{{ __('admin.entry_password') }}">
                                             <div class="invalid-feedback error_password" style="display: block"></div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label">{{ __('general.confirm_password') }}</label>
-                                            <input type="password" name="password_confirmation" id="register-password-confirm" class="form-control" required placeholder="{{ __('general.confirm_password') }}">
+                                            <label class="form-label">{{ __('admin.confirm_password') }}</label>
+                                            <input type="password" name="password_confirmation" id="register-password-confirm" class="form-control" required placeholder="{{ __('admin.confirm_password') }}">
                                             <div class="invalid-feedback error_password_confirmation" style="display: block"></div>
                                         </div>
                                         {{-- <div class="col-12">
@@ -194,8 +194,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('general.text_cancel') }}</button>
-                                <button type="button" class="btn btn-primary" id="register_btn">{{ __('general.add_user') }}</a>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('admin.text_cancel') }}</button>
+                                <button type="button" class="btn btn-primary" id="register_btn">{{ __('admin.add_user') }}</a>
                             </div>
                         </div>
                     </div>

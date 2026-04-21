@@ -4,7 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
+use Carbon\Carbon;
 
 class Authenticate extends Middleware
 {
@@ -23,6 +25,12 @@ class Authenticate extends Middleware
     public function handle($request, Closure $next, ...$guards)
     {
         $this->guards = $guards;
+
+        if (Auth::guard('admins')->check()) {
+            Auth::guard('admins')->user()->update([
+                'last_activity' => Carbon::now()->getTimestamp()
+            ]);
+        }
 
         return parent::handle($request, $next, ...$guards);
     }

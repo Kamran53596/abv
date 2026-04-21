@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Carbon\Carbon;
 
 
 class Admin extends Authenticatable
@@ -26,9 +27,12 @@ class Admin extends Authenticatable
         'name',
         'surname',
         'phone',
+        'photo',
+        'gender',
         'email',
         'password',
-        'status'
+        'status',
+        'last_activity'
     ];
 
     /**
@@ -65,6 +69,11 @@ class Admin extends Authenticatable
         return $query->paginate(20)->withQueryString();
     }
 
+    public function getOnlineAttribute()
+    {
+        return $this->last_activity ? Carbon::parse($this->last_activity)->timezone('Asia/Baku')->translatedFormat('F j, Y H:i') : '';
+    }
+
     public function getFullNameAttribute()
     {
         return $this->name . ' ' . $this->surname;
@@ -77,7 +86,7 @@ class Admin extends Authenticatable
 
     public function getStatusTitleAttribute()
     {
-        return $this->status ? __('general.text_active') : __('general.text_passive');
+        return $this->status ? __('admin.text_active') : __('admin.text_passive');
     }
 
     public function isSuperAdmin()

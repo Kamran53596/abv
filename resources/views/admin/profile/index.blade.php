@@ -23,12 +23,12 @@
                                 <div class="profile-meta-row">
                                     {{-- <span><i class="bi bi-geo-alt"></i> New York, USA</span> --}}
                                     {{-- <span><i class="bi bi-briefcase"></i> 8 years experience</span> --}}
-                                    <span><i class="bi bi-calendar3"></i> {{ __('general.text_joined') }} {{ \Carbon\Carbon::parse(auth('admins')->user()->created_at)->translatedFormat('F j, Y') }}</span>
+                                    <span><i class="bi bi-calendar3"></i> {{ __('admin.text_joined') }} {{ \Carbon\Carbon::parse(auth('admins')->user()->created_at)->translatedFormat('F j, Y') }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="profile-hero-actions">
-                            <a href="{{ route('backend.edit.profile') }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil me-1"></i> {{ __('general.edit_profile') }}</a>
+                            <a href="{{ route('backend.edit.profile') }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil me-1"></i> {{ __('admin.edit_profile') }}</a>
                             {{-- <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-share me-1"></i> Share</button> --}}
                         </div>
                     </div>
@@ -61,14 +61,14 @@
                     <div class="col-xl-4">
                         <div class="card mb-3">
                             <div class="card-header">
-                                <h5 class="card-title">{{ __('general.text_about') }}</h5>
+                                <h5 class="card-title">{{ __('admin.text_about') }}</h5>
                             </div>
                             <div class="card-body">
                                 {{-- <p class="profile-about">Passionate product designer focused on accessible, high-performance interfaces with scalable design systems. I collaborate deeply with engineering and product teams to translate strategy into shipped experiences.</p> --}}
                                 <div class="profile-contact-list">
                                     <div class="profile-contact-item"><i class="bi bi-envelope"></i> {{ auth('admins')->user()->email }}</div>
                                     <div class="profile-contact-item"><i class="bi bi-telephone"></i> {{ auth('admins')->user()->phone }}</div>
-                                    <div class="profile-contact-item"><i class="bi bi-gender-{{ auth('admins')->user()->gender ? 'male' : 'female' }}"></i> {{ auth('admins')->user()->gender ? __('general.text_male') : __('general.text_female') }}</div>
+                                    <div class="profile-contact-item"><i class="bi bi-gender-{{ auth('admins')->user()->gender ? 'male' : 'female' }}"></i> {{ auth('admins')->user()->gender ? __('admin.text_male') : __('admin.text_female') }}</div>
                                     {{-- <div class="profile-contact-item"><i class="bi bi-globe"></i> kevinanderson.design</div> --}}
                                 </div>
                             </div>

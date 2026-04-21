@@ -15,14 +15,14 @@
           <div class="fauth-main-inner">
             <div class="fauth-card">
               <div class="fauth-card-head">
-                <h1 class="fauth-title">{{ __('general.welcome_back') }}</h1>
-                <p class="fauth-subtitle">{{ __('general.auth_subtitle') }}</p>
+                <h1 class="fauth-title">{{ __('admin.welcome_back') }}</h1>
+                <p class="fauth-subtitle">{{ __('admin.auth_subtitle') }}</p>
               </div>
 
               <form class="fauth-form" method="POST" action="{{ route('backend.login') }}">
                 @csrf
                 <div class="fauth-field">
-                  <label for="email" class="form-label">{{ __('general.text_email') }}</label>
+                  <label for="email" class="form-label">{{ __('admin.text_email') }}</label>
                   <input type="email" class="form-control" id="email" value="{{ old('email') }}" name="email" placeholder="name@example.com" required>
                   @if ($errors->first('email'))
                       <div class="invalid-feedback" style="display: block">{{ $errors->first('email') }}</div>
@@ -31,11 +31,11 @@
 
                 <div class="fauth-field">
                   <div class="fauth-row-between">
-                    <label for="password" class="form-label">{{ __('general.text_password') }}</label>
+                    <label for="password" class="form-label">{{ __('admin.text_password') }}</label>
                     {{-- <a href="auth-forgot-password.html" class="fauth-link">Forgot password?</a> --}}
                   </div>
                   <div class="input-group">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="{{ __('general.entry_password') }}" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="{{ __('admin.entry_password') }}" required>
                     <button class="btn btn-outline-secondary password-toggle" type="button" data-toggle-password>
                       <i class="bi bi-eye"></i>
                     </button>
@@ -49,7 +49,7 @@
                   </div>
                 </div> --}}
 
-                <button type="submit" class="btn btn-primary w-100">{{ __('general.text_login') }}</button>
+                <button type="submit" class="btn btn-primary w-100">{{ __('admin.text_login') }}</button>
               </form>
             </div>
 
